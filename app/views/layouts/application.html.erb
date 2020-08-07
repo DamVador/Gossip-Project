@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TheGossipProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="../../assets/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand" href="/">The Gossip Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/team">Team</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/gossips/new">Ajouter un potin</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      
+
+      <% if current_user == nil%>
+            <%= link_to "S'inscrire", new_user_path, class: "btn btn-light mr-3" %>
+            <%= link_to "Connexion", new_session_path, class: "btn btn-primary" %>
+        
+        <% else %>
+          <%= link_to "Déconnexion", session_path(session.id), method: :delete, class: "btn btn-outline-danger" %>
+        <% end %>
+    </form>
+  </div>
+</nav>
+
+
+ <%= yield %>
+
+ <footer class= "page-footer pt-md-3 border-top" style="height: 200">
+    <div class="row mx-auto container">
+      <div class="col-6 col-md ">
+        <h5>THE GOSSIP PROJECT</h5>
+      </div>
+
+      <div class="col-6 col-md m text-right">
+      <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="/">The Gossip Project</a></li>
+          <li><a class="text-muted" href="/team">Team</a></li>
+          <li><a class="text-muted" href="/contact">Contact</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>
